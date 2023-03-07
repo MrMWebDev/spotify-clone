@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
+import MenuItem from './components/MenuItem.vue';
 
 import ChevronUp from 'vue-material-design-icons/ChevronUp.vue';
 import ChevronDown from 'vue-material-design-icons/ChevronDown.vue';
@@ -48,7 +49,15 @@ let openMenu = ref(false);
     </div>
 
     <div id="SideNav" class="h-[100%] p-6 w-[240px] fixed z-50 bg-black">
-
+      <RouterLink to="/">
+        <img with="125" src="/images/icons/spotify-logo.png" alt="">
+      </RouterLink>
+      <div class="my-8"></div>
+      <ul>
+        <RouterLink to="/">
+          <MenuItem />
+        </RouterLink>
+      </ul>
     </div>
 
   </div>

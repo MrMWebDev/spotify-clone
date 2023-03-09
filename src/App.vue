@@ -13,10 +13,8 @@ let openMenu = ref(false);
 
 <template>
   <div>
-
     <div
       class="w-[calc(100%-240px)] h-[60px] fixed right-0 z-20 bg-[#101010] bg-opacity-80 flex items-center justify-between">
-
       <div class="flex items-center ml-6">
         <button type="button" class="rounded-full bg-black p-[1] cursor-pointer">
           <ChevronLeft fillColor="#ffffff" :size="30" />
@@ -25,9 +23,7 @@ let openMenu = ref(false);
           <ChevronRight fillColor="#ffffff" :size="30" />
         </button>
       </div>
-
       <!-- Add @click="openMenu = !openMenu" before :class -->
-
       <button :class="openMenu ? 'bg-[#282828]' : 'bg-black'"
         class="bg-black hover:bg-[#282828] rounded-full p-0.5 mr-8 mt-0.5 cursor-pointer">
         <div class="flex items-center">
@@ -38,7 +34,6 @@ let openMenu = ref(false);
           <ChevronUp v-else @click="openMenu = false" fillColor="#ffffff" :size="25" />
         </div>
       </button>
-
       <span v-if="openMenu"
         class="fixed w-[190px] bg-[#282828] shadow-2xl z-50 rounded-sm top-[52px] right-[35px] p-1 cursor-pointer">
         <ul class="text-gray-200 font-semibold text-[14px]">
@@ -47,7 +42,6 @@ let openMenu = ref(false);
         </ul>
       </span>
     </div>
-
     <div id="SideNav" class="h-[100%] p-6 w-[240px] fixed z-50 bg-black">
       <RouterLink to="/">
         <img with="125" src="/images/icons/spotify-logo.png" alt="">
@@ -58,11 +52,38 @@ let openMenu = ref(false);
           <MenuItem class="ml-[1px]" :iconSize="23" name="Home" iconString="home" pageUrl="/" />
         </RouterLink>
         <RouterLink to="/search">
-          <MenuItem class="ml-[1px]" :iconSize="23" name="Search" iconString="search" pageUrl="/search" />
+          <MenuItem class="ml-[1px]" :iconSize="24" name="Search" iconString="search" pageUrl="/search" />
         </RouterLink>
+        <RouterLink to="/library">
+          <MenuItem class="ml-[2px]" :iconSize="23" name="Library" iconString="library" pageUrl="/library" />
+        </RouterLink>
+        <div class="py-3.5"></div>
+        <MenuItem :iconSize="24" name="Create Playlist" iconString="playlist" pageUrl="/playlist" />
+        <MenuItem class="-ml-[1px]" :iconSize="27" name="Liked Songs" iconString="liked" pageUrl="/liked" />
+      </ul>
+      <div class="border-b border-b-gray-700"></div>
+      <ul>
+        <li class="font-semibold text-[13px] mt-3 text-gray-300 hover:text-white">My Playlist #1</li>
+        <li class="font-semibold text-[13px] mt-3 text-gray-300 hover:text-white">My Playlist #2</li>
+        <li class="font-semibold text-[13px] mt-3 text-gray-300 hover:text-white">My Playlist #3</li>
+        <li class="font-semibold text-[13px] mt-3 text-gray-300 hover:text-white">My Playlist #4</li>
       </ul>
     </div>
+  </div>
 
+  <div class="
+        fixed
+              right-0
+              top-0
+              w-[calc(100%-240px)]
+              overflow-auto
+              h-full
+              bg-gradient-to-b
+              from-[#1C1C1C]
+              to-black">
+    <div class="mt-[70px]"></div>
+    <RouterView />
+    <div class="mb-[100px]"></div>
   </div>
 </template>
 

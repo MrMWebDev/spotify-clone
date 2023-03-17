@@ -4,6 +4,11 @@ import Heart from 'vue-material-design-icons/Heart.vue';
 import Play from 'vue-material-design-icons/Play.vue';
 import Pause from 'vue-material-design-icons/Pause.vue';
 
+import { useSongStore } from '../stores/song';
+import { storeToRefs } from 'pinia';
+const useSong = useSongStore();
+const { isPlaying, currentTrack } = storeToRefs(useSong);
+
 let isHovered = ref(false);
 let isTrackTime = ref(null);
 
@@ -31,8 +36,11 @@ onMounted(() => {
         @mouseleave="isHovered = false">
         <div class="flex items-center w-full py-1.5">
             <div v-if="isHovered" class="w-[40px] ml-[14px] mr-[6px] cursor-pointer">
-                <Play v-if="true" fillColor="#ffffff" :size="25" />
-                <Pause v-else fillColor="#ffffff" :size="25" />
+                <Play v-if="!isPlaying" fillColor="#ffffff" :size="25"
+                    @click="useSong.playOrPauseThisSong(artist, track)" />
+                <Play v-else-if="isPlaying && currentTrack.name !== track.name" fillColor="#ffffff" :size="25"
+                    @click="useSong.loadSong(artist, track)" />
+                <Pause v-else fillColor="#ffffff" :size="25" @click="useSong.playOrPauseThisSong()" />
             </div>
             <div v-else class="text-white font-semibold w-[40px] ml-5">
                 <span>

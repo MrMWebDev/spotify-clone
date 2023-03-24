@@ -13,9 +13,7 @@ import { storeToRefs } from 'pinia';
 const useSong = useSongStore();
 const { isPlaying, currentTrack } = storeToRefs(useSong);
 
-onMounted(() => {
-  isPlaying.value = false;
-});
+onMounted(() => { isPlaying.value = false; });
 
 let openMenu = ref(false);
 </script>
@@ -85,7 +83,7 @@ let openMenu = ref(false);
     <RouterView />
     <div class="mb-[100px]"></div>
   </div>
-  <!-- v-if="currentTrack" -->
-  <MusicPlayer />
+
+  <MusicPlayer v-if="currentTrack" />
 </template>
 

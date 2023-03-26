@@ -22,7 +22,7 @@ const { track, artist, index } = toRefs(props);
 
 onMounted(() => {
     const audio = new Audio(track.value.path);
-    audio.addEventListener('loadmetadata', function () {
+    audio.addEventListener('loadedmetadata', function () {
         const duration = audio.duration;
         const minutes = Math.floor(duration / 60);
         const seconds = Math.floor(duration % 60);

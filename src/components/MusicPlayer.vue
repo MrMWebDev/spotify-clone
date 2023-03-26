@@ -92,7 +92,7 @@ watch(() => isTrackTimeCurrent.value, (time) => {
                         {{ currentTrack.name }}
                     </div>
                     <div class="text-[11px] text-gray-400 hover:underline hover:text-white cursor-pointer">
-                        {{ currentTrack.name }}
+                        {{ currentArtist.name }}
                     </div>
                 </div>
             </div>
@@ -128,7 +128,7 @@ watch(() => isTrackTimeCurrent.value, (time) => {
                         :style="`width: ${range}%;`" :class="isHover ? 'bg-green-500' : 'bg-white'" />
                     <div class="absolute h-[4px] z-[-0] mt-[6px] inset-y-0 left-0 w-full bg-gray-500 rounded-full" />
                 </div>
-                <div v-if="isTrackTimeTotal" class="text-white text-[12px] pr-2 pt[11px]">{{ isTrackTimeTotal }}</div>
+                <div v-if="isTrackTimeTotal" class="text-white text-[12px] pl-2 pt[11px]">{{ isTrackTimeTotal }}</div>
             </div>
         </div>
         <div class="flex items-center w-1/4 justify-end pr-10">

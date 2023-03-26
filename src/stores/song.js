@@ -6,12 +6,12 @@ export const useSongStore = defineStore('song', {
     isPlaying: false,
     audio: null,
     currentArtist: null,
-    currentTrack: null,
+    currentTrack: null
   }),
   actions: {
-    loadSong(track, artist) {
-      this.currentTrack = track;
+    loadSong(artist, track) {
       this.currentArtist = artist;
+      this.currentTrack = track;
 
       if (this.audio && this.audio.src) {
         this.audio.pause();
@@ -40,7 +40,7 @@ export const useSongStore = defineStore('song', {
 
     playOrPauseThisSong(artist, track) {
       if (!this.audio || !this.audio.src || (this.currentTrack.id !== track.id)) {
-        this.loadSong(track, artist);
+        this.loadSong(artist, track);
         return;
       }
 
@@ -63,12 +63,12 @@ export const useSongStore = defineStore('song', {
     },
 
     playFromFirst() {
+      this.resetState();
       let track = artist.tracks[0];
       this.loadSong(artist, track);
     },
 
     resetState() {
-      this.resetState();
       this.isPlaying = false;
       this.audio = null;
       this.currentArtist = null;

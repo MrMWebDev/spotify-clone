@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue';
-// import MusicPlayerVolume from '../components/MusicPlayerVolume.vue'
+import MusicPlayerVolume from '../components/MusicPlayerVolume.vue';
 import Heart from 'vue-material-design-icons/Heart.vue';
 import PictureInPictureBottomRight from 'vue-material-design-icons/PictureInPictureBottomRight.vue';
 import Play from 'vue-material-design-icons/Play.vue';
@@ -108,7 +108,7 @@ watch(() => isTrackTimeCurrent.value, (time) => {
                         <SkipBackward fillColor="#FFFFFF" :size="25" @click="useSong.prevSong(currentTrack)" />
                     </button>
                     <button class="p-1 rounded-full mx-3 bg-white"
-                        @click="playOrPauseThisSong(currentArtist, currentTrack)">
+                        @click="useSong.playOrPauseThisSong(currentArtist, currentTrack)">
                         <Play v-if="!isPlaying" fillColor="#181818" :size="25" />
                         <Pause v-else fillColor="#181818" :size="25" />
                     </button>
@@ -130,6 +130,9 @@ watch(() => isTrackTimeCurrent.value, (time) => {
                 </div>
                 <div v-if="isTrackTimeTotal" class="text-white text-[12px] pr-2 pt[11px]">{{ isTrackTimeTotal }}</div>
             </div>
+        </div>
+        <div class="flex items-center w-1/4 justify-end pr-10">
+            <MusicPlayerVolume />
         </div>
     </div>
 </template>
